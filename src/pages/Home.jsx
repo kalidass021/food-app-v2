@@ -99,12 +99,11 @@ const Home = () => {
         <div className='form-control'>
           <label className='label cursor-pointer'>
             <span className='label-text'>Top Rated</span>
-            <button onClick={filterBtnClick}>
               <input
                 type='checkbox'
                 className='toggle'
+                onClick={filterBtnClick}
               />
-            </button>
           </label>
         </div>
         {/* <div className='m-4 p-4 flex items-center'>

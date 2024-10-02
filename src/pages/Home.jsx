@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantCard, { withSpeedyLabel } from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
@@ -10,7 +10,8 @@ const Home = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-  // const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('');
+  const [showTopRated, setShowTopRated] = useState(false);
 
   const RestaurantCardSpeedy = withSpeedyLabel(RestaurantCard);
   // import setUserName and required details from the context
@@ -21,13 +22,6 @@ const Home = () => {
   // console.loHome rendered");
 
   // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
-
-  const filterBtnClick = () => {
-    let filteredList = restaurantList.filter((res) => res.info.avgRating > 4);
-    // setRestaurantList(filteredList);
-    setFilteredRestaurant(filteredList);
-    // console.log("filteredList", filteredList);
-  };
 
   useEffect(() => {
     fetchData();
@@ -57,6 +51,17 @@ const Home = () => {
     }
   };
 
+  const filterBtnClick = () => {
+    // remove top rated filter
+    setShowTopRated(!showTopRated);
+    const filteredList = !showTopRated
+      ? restaurantList.filter((res) => res.info.avgRating > 4.5)
+      : restaurantList;
+    // setRestaurantList(filteredList);
+    setFilteredRestaurant(filteredList);
+    // console.log("filteredList", filteredList);
+  };
+
   // conditional rendering
   // if (restaurantList.length === 0)
   return !restaurantList?.length ? (
@@ -65,7 +70,7 @@ const Home = () => {
     <div className='body'>
       <div className='flex'>
         <div className='m-4 p-4'>
-          {/* <input
+          <input
             data-testid='searchInput'
             type='text'
             className='border border-solid border-black'
@@ -73,7 +78,7 @@ const Home = () => {
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
-          /> */}
+          />
           <button
             className='px-4 py-2 m-4 bg-green-100 rounded-lg'
             onClick={() => {
@@ -91,17 +96,28 @@ const Home = () => {
             Search
           </button>
         </div>
-        <div className='m-4 p-4 flex items-center'>
+        <div className='form-control'>
+          <label className='label cursor-pointer'>
+            <span className='label-text'>Top Rated</span>
+            <button onClick={filterBtnClick}>
+              <input
+                type='checkbox'
+                className='toggle'
+              />
+            </button>
+          </label>
+        </div>
+        {/* <div className='m-4 p-4 flex items-center'>
           <button
             className='px-4 py-2 bg-blue-100 rounded-lg'
             onClick={filterBtnClick}
           >
             Top Rated Restaurants
           </button>
-        </div>
+        </div> */}
         <div className='m-4 p-4 flex items-center'>
           {/* Using that function update data in the context */}
-          <label>Username </label>
+          {/* <label>Username </label> */}
           {/* <input
             className='border border-black p-2'
             value={loggedInuser}

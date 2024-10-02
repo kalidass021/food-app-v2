@@ -44,7 +44,7 @@ export const withSpeedyLabel = (WrappedComponent) => {
   const SpeedyRestaurantCard = ({ resData }) => {
     return (
       <div>
-        <label>Speedy</label>
+        <label className='absolute bg-black text-white m-2 p-2 rounded-md'>Speedy</label>
         <WrappedComponent resData={resData} />
       </div>
     );

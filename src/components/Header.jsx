@@ -3,29 +3,43 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 
-
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   return (
-    <div className='navbar max-h-[30px] shadow-xl bg-[#ff5200] text-white font-swig pr-[40px]'>
+    <div className='navbar max-h-[30px] shadow-xl bg-[#ff5200] text-white font-swig px-[40px]'>
       <div className='flex-1'>
         <motion.div
-        whileHover={{
-          scale: 1.15,
-          transition: {duration: 0.2},
-        }}
-        whileTap={{scale: 1}}
+          whileHover={{
+            scale: 1.15,
+            transition: { duration: 0.2 },
+          }}
+          whileTap={{ scale: 1 }}
         >
-        <Link to='/' className='btn btn-ghost text-xl'>food app</Link>
+          <Link to='/' className='btn btn-ghost text-xl'>
+            food app
+          </Link>
         </motion.div>
       </div>
 
-      <div className='flex-none'>
+      <div className='flex-none pr-[30px]'>
         {/* link1 */}
-        <ul className='menu menu-horizontal px-1'>
+        <ul className='menu menu-horizontal px-2'>
           <li>
-            <Link to='/' className='btn btn-ghost'>
+            <Link
+              to='/'
+              className='btn btn-ghost hover:bg-[#ff5200] hover:text-gray-200'
+            >
               Home
+            </Link>
+          </li>
+        </ul>
+        <ul className='menu menu-horizontal px-2'>
+          <li>
+            <Link
+              to='/about'
+              className='btn btn-ghost hover:bg-[#ff5200] hover:text-gray-200'
+            >
+              About
             </Link>
           </li>
         </ul>
@@ -73,4 +87,3 @@ const Header = () => {
 };
 
 export default Header;
-

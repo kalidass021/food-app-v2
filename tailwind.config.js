@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      'fontfamily': {
+        'swig': ['Gilroy-Medium', 'sans-serif']
+      }
+    },
   },
   plugins: [
     daisyui,

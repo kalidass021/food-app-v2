@@ -1,27 +1,30 @@
 // import { LOGO_URL } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
+
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   return (
-    <div className='navbar bg-base-100'>
+    <div className='navbar max-h-[30px] shadow-xl bg-[#ff5200] text-white font-swig pr-[40px]'>
       <div className='flex-1'>
-        <a className='btn btn-ghost text-xl'>food app</a>
+        <motion.div
+        whileHover={{
+          scale: 1.15,
+          transition: {duration: 0.2},
+        }}
+        whileTap={{scale: 1}}
+        >
+        <Link to='/' className='btn btn-ghost text-xl'>food app</Link>
+        </motion.div>
       </div>
-      {/* search */}
-      <div className='form-control'>
-        <input
-          type='text'
-          placeholder='Search'
-          className='input input-bordered w-24 md:w-auto'
-        />
-      </div>
+
       <div className='flex-none'>
         {/* link1 */}
         <ul className='menu menu-horizontal px-1'>
           <li>
-            <Link to='/' className='btn btn-ghost hover:bg-accent'>
+            <Link to='/' className='btn btn-ghost'>
               Home
             </Link>
           </li>

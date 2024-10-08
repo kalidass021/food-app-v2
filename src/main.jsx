@@ -5,7 +5,7 @@ import App from './App.jsx';
 import './index.css';
 import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
-import About from './components/About.jsx';
+import About from './pages/About.jsx';
 import RestaurantMenu from './pages/RestaurantMenu.jsx';
 import ErrorDisplay from './components/ErrorDisplay.jsx';
 

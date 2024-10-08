@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantCard, { withSpeedyLabel } from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
-// import Shimmer from "./Shimmer";
 import Shimmer from '../components/skeleton/Shimmer';
-// import UserContext from '../utils/UserContext';
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -67,20 +65,21 @@ const Home = () => {
   return !restaurantList?.length ? (
     <Shimmer />
   ) : (
-    <div className='body'>
-      <div className='flex'>
+    <div className='bg-rgb(255, 255, 255)'>
+      <div className='flex items-center ml-[300px]'>
         <div className='m-4 p-4'>
           <input
             data-testid='searchInput'
             type='text'
-            className='border border-solid border-black'
+            placeholder='Search'
+            className='border-[1.5px] pl-2 rounded-xl w-[350px] h-[30px] border-solid border-gray-400'
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
           />
           <button
-            className='px-4 py-2 m-4 bg-green-100 rounded-lg'
+            className='p-4 py-1 m-4 bg-[#ff5200] text-white rounded-xl'
             onClick={() => {
               // Filter the res and update the UI
               // search text
@@ -96,12 +95,12 @@ const Home = () => {
             Search
           </button>
         </div>
-        <div className='form-control'>
+        <div className='form-control pl-[120px] mr-0'>
           <label className='label cursor-pointer'>
-            <span className='label-text'>Top Rated</span>
+            <span className='label-text mr-[10px]'>Top Rated</span>
               <input
                 type='checkbox'
-                className='toggle'
+                className='toggle bg-[#ff5200] hover:bg-[#ff5200]'
                 onClick={filterBtnClick}
               />
           </label>
@@ -124,7 +123,7 @@ const Home = () => {
           /> */}
         </div>
       </div>
-      <div className='m-5 flex flex-wrap justify-between'>
+      <div className='p-[20px] grid grid-cols-4 gap-[10px] pt[10px]'>
         {filteredRestaurant?.map((restaurant) => (
           <Link
             key={restaurant.info.id}

@@ -72,7 +72,7 @@ const ItemList = ({ itemCards }) => {
               )}
             </div> */}
             <div>
-              {pathname === 'cart' ? (
+              {pathname === '/cart' ? (
                 <></>
               ) : (
                 <button

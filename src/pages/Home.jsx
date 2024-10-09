@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import RestaurantCard, { withSpeedyLabel } from '../components/RestaurantCard';
+import RestaurantCard from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
-import Shimmer from '../components/skeleton/Shimmer';
+// import Shimmer from '../components/skeleton/Shimmer';
+import RestaurantCardLoader from '../components/skeleton/RestaurantCardLoader';
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -11,7 +12,7 @@ const Home = () => {
   const [searchText, setSearchText] = useState('');
   const [showTopRated, setShowTopRated] = useState(false);
 
-  const RestaurantCardSpeedy = withSpeedyLabel(RestaurantCard);
+  // const RestaurantCardSpeedy = withSpeedyLabel(RestaurantCard);
   // import setUserName and required details from the context
   // const { loggedInuser, setUserName } = useContext(UserContext);
 
@@ -63,7 +64,7 @@ const Home = () => {
   // conditional rendering
   // if (restaurantList.length === 0)
   return !restaurantList?.length ? (
-    <Shimmer />
+    <RestaurantCardLoader />
   ) : (
     <div className='bg-rgb(255, 255, 255)'>
       <div className='flex items-center ml-[300px]'>
@@ -135,11 +136,13 @@ const Home = () => {
               restaurant?.info?.sla?.deliveryTime <= 30
             )}
 
-            {restaurant.info.sla.deliveryTime <= 30 ? (
+            {/* {restaurant.info.sla.deliveryTime <= 30 ? (
               <RestaurantCardSpeedy resData={restaurant} />
             ) : (
               <RestaurantCard resData={restaurant} />
-            )}
+            )} */}
+
+            <RestaurantCard resData={restaurant} />
 
             {/* {
             restaurant.info.sla.deliveryTime < 26 ? <RestaurantCardSpeedy resData={restaurant} /> : <RestaurantCard resData={restaurant} />

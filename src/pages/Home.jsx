@@ -52,12 +52,22 @@ const Home = () => {
 
   const filterBtnClick = () => {
     // remove top rated filter
-    setShowTopRated(!showTopRated);
-    const filteredList = !showTopRated
-      ? restaurantList.filter((res) => res.info.avgRating > 4.5)
-      : restaurantList;
-    // setRestaurantList(filteredList);
-    setFilteredRestaurant(filteredList);
+    const filteredList = restaurantList.filter((res) => res.info.avgRating > 4.5);
+
+    // showTopRated === false
+    if (!showTopRated) {
+      setFilteredRestaurant(filteredList);
+      setShowTopRated(true);
+    } else {
+      setFilteredRestaurant(restaurantList);
+      setShowTopRated(false);
+    }
+    // setShowTopRated(!showTopRated);
+    // const filteredList = !showTopRated
+    //   ? restaurantList.filter((res) => res.info.avgRating > 4.5)
+    //   : restaurantList;
+    // // setRestaurantList(filteredList);
+    // setFilteredRestaurant(filteredList);
     // console.log("filteredList", filteredList);
   };
 
@@ -124,17 +134,17 @@ const Home = () => {
           /> */}
         </div>
       </div>
-      <div className='p-[20px] grid grid-cols-4 gap-[10px] pt[10px]'>
+      <div className='ml-[20px] p-[40px] grid grid-cols-4 gap-[10px] pt[10px]'>
         {filteredRestaurant?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={`restaurants/${restaurant.info.id}`}
           >
             {/* if a delivery time is less than 30mins add speedy label*/}
-            {console.log(
+            {/* {console.log(
               'restaurant.info.sla.deliveryTime',
               restaurant?.info?.sla?.deliveryTime <= 30
-            )}
+            )} */}
 
             {/* {restaurant.info.sla.deliveryTime <= 30 ? (
               <RestaurantCardSpeedy resData={restaurant} />

@@ -18,7 +18,7 @@ const RestaurantCard = (props) => {
     >
       <div
         data-testid='resCard'
-        className='m-4 p-4 w-[250px] h-[350p] rounded-t-md border-b-2'
+        className='m-4 mt-0 p-4 w-[250px] h-[370px] rounded-t-md border-b-2'
       >
         <img
           className='rounded-lg w-[220px] h-[138.5px]'
@@ -28,8 +28,8 @@ const RestaurantCard = (props) => {
         <h3 className='font-bold py-4 text-lg'>{name}</h3>
         <h4 className='text-sm text-gray-600'>{cuisines.join(', ')}</h4>
         <h4 className='text-sm text-gray-600'>{costForTwo}</h4>
-        <h4>{avgRating} ⭐</h4>
-        <h4>{deliveryTime} mins</h4>
+        <h4 className='text-sm text-gray-600'>{avgRating} ⭐</h4>
+        <h4 className='text-sm text-gray-600'>{deliveryTime} mins</h4>
       </div>
     </motion.div>
   );

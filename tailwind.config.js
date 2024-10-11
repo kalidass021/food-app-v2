@@ -7,8 +7,8 @@ export default {
   ],
   theme: {
     extend: {
-      'fontfamily': {
-        'swig': ['Gilroy-Medium', 'sans-serif']
+      'fontFamily': {
+        'swig':['Gilroy-Medium', 'sans-serif']
       }
     },
   },

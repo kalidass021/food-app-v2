@@ -79,7 +79,7 @@ const ItemList = ({ itemCards }) => {
                   className='font-bold mt-[120px] hover:bg-gray-100 absolute p-2 w-28 ml-[40px] text-green-600 bg-white rounded-lg shadow-lg'
                   onClick={() => handleAddItem(itemCard)}
                 >
-                  Add
+                ADD
                 </button>
               )}
               <img className='ml-5 rounded-2xl min-h-[130px] min-w-[130px] max-h-[144px] max-w-[156px]' src={`${CDN_URL}${itemCard.card.info.imageId}`} />

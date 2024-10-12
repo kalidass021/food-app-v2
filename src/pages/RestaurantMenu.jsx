@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantCardLoader from '../components/skeleton/Shimmer';
+import RestaurantMenuLoader from '../components/skeleton/RestaurantMenuLoader';
 import RestaurantCategory from '../components/RestaurantCategory';
 import useRestaurantMenu from '../hooks/useRestaurantMenu';
 import { FaStar } from 'react-icons/fa';
@@ -16,7 +16,7 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(0);
 
   // if (resInfo === null)
-  if (!resInfo) return <RestaurantCardLoader />;
+  if (!resInfo) return <RestaurantMenuLoader />;
 
   const { name, cuisines, costForTwoMessage, avgRating } =
     resInfo?.data?.cards[2]?.card?.card?.info || {};

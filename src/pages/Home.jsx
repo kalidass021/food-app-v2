@@ -52,7 +52,7 @@ const Home = () => {
 
   const filterBtnClick = () => {
     // remove top rated filter
-    const filteredList = restaurantList.filter((res) => res.info.avgRating > 4.5);
+    const filteredList = restaurantList.filter((res) => res.info.avgRating > 4);
 
     // showTopRated === false
     if (!showTopRated) {
@@ -111,7 +111,7 @@ const Home = () => {
             <span className='label-text mr-[10px]'>Top Rated</span>
               <input
                 type='checkbox'
-                className='toggle bg-[#ff5200] hover:bg-[#ff5200]'
+                className='toggle bg-gray-600 toggle-error'
                 onClick={filterBtnClick}
               />
           </label>

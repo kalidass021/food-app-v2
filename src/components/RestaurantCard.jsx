@@ -1,5 +1,6 @@
 import { CDN_URL } from '../utils/constants';
 import { motion } from 'framer-motion';
+import { IoIosStar } from 'react-icons/io';
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -26,9 +27,10 @@ const RestaurantCard = (props) => {
           src={`${CDN_URL}${cloudinaryImageId}`}
         />
         <h3 className='font-bold py-4 text-lg'>{name}</h3>
-        <h4 className='text-sm text-gray-600'>{cuisines.join(', ')}</h4>
+        {/* {console.log('cuisines', cuisines.join(','))} */}
+        <h4 className='text-sm text-gray-600'>{cuisines.join(',').length < 25 ? cuisines.join(' ,') : cuisines.join(' ,').slice(0, 20)}{'...'}</h4>
         <h4 className='text-sm text-gray-600'>{costForTwo}</h4>
-        <h4 className='text-sm text-gray-600'>{avgRating} ⭐</h4>
+        <div className='flex'><h4 className='text-sm text-gray-600'>{avgRating}</h4><span className='pl-[2px] pt-[2px]'><IoIosStar size={14} color='#165b42' /></span></div>
         <h4 className='text-sm text-gray-600'>{deliveryTime} mins</h4>
       </div>
     </motion.div>

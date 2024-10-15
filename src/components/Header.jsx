@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
+import { SiIfood } from "react-icons/si";
 
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -16,7 +17,7 @@ const Header = () => {
           whileTap={{ scale: 1 }}
         >
           <Link to='/' className='btn btn-ghost text-xl'>
-            food app
+          <SiIfood size={30}/>
           </Link>
         </motion.div>
       </div>

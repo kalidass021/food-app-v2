@@ -13,8 +13,8 @@ const useGeoLocation = () => {
           const { latitude, longitude } = position.coords;
           setLocationData({ latitude, longitude });
         },
-        (error) => {
-          console.error('Error getting geolocation:', error);
+        (err) => {
+          console.error('Error while getting geolocation:', err);
         }
       );
     } else {

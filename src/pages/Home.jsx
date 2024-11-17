@@ -16,12 +16,9 @@ const Home = () => {
   const [showTopRated, setShowTopRated] = useState(false);
 
   const {latitude, longitude} = useGeoLocation();
-  console.log({latitude, longitude});
 
   const lat = latitude || DEFAULT_LATITUDE;
   const lng = longitude || DEFAULT_LONGITUDE;
-
-  console.log({lat, lng});
 
   // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
 
@@ -39,7 +36,7 @@ const Home = () => {
       const data = await fetch(url);
       const json = await data.json();
 
-      console.log('json data', json);
+      // console.log('json data', json);
       // optional chaining
       setRestaurantList(
         json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
@@ -99,7 +96,7 @@ const Home = () => {
             onClick={() => {
               // Filter the res and update the UI
               // search text
-              console.log('searchText', searchText);
+              // console.log('searchText', searchText);
               const filteredRestaurant = restaurantList.filter((res) => {
                 return res.info.name
                   .toLowerCase()

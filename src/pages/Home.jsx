@@ -4,6 +4,9 @@ import RestaurantCard from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
 // import Shimmer from '../components/skeleton/Shimmer';
 import RestaurantCardLoader from '../components/skeleton/RestaurantCardLoader';
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../utils/constants';
+
+import useGeoLocation from '../hooks/useGeoLocation';
 
 const Home = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -12,31 +15,31 @@ const Home = () => {
   const [searchText, setSearchText] = useState('');
   const [showTopRated, setShowTopRated] = useState(false);
 
-  // const RestaurantCardSpeedy = withSpeedyLabel(RestaurantCard);
-  // import setUserName and required details from the context
-  // const { loggedInuser, setUserName } = useContext(UserContext);
+  const {latitude, longitude} = useGeoLocation();
+  console.log({latitude, longitude});
 
-  // console.log("restaurantList", restaurantList);
+  const lat = latitude || DEFAULT_LATITUDE;
+  const lng = longitude || DEFAULT_LONGITUDE;
 
-  // console.loHome rendered");
+  console.log({lat, lng});
 
   // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
 
   useEffect(() => {
-    fetchData();
-  }, []);
+      fetchData();
+  }, [lat, lng]);
 
   const fetchData = async () => {
     // server prod url
-    const url = 'https://food-api-o33x.onrender.com/api/restaurants';
-    // const url = 'http://localhost:5000/api/restaurants'
+    const url = `https://food-api-o33x.onrender.com/api/restaurants?lat=${lat}&lng=${lng}`;
+    // const url = `http://localhost:5000/api/restaurants?lat=${lat}&lng=${lng}`;
     // const url =
     //   'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.89960&lng=80.22090&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
     try {
       const data = await fetch(url);
       const json = await data.json();
 
-      console.log('json', json);
+      console.log('json data', json);
       // optional chaining
       setRestaurantList(
         json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle

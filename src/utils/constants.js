@@ -1,9 +1,10 @@
-export const CDN_URL =
-  'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
-export const LOGO_URL =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-yPxmHYHF8tgtmWhpC59Jk2PLpzbxaL-9bA&s';
+const APP_ENV = import.meta.env.VITE_APP_ENV;
+const BASE_API_URL =
+  APP_ENV === 'production'
+    ? import.meta.env.VITE_API_URL_PROD
+    : import.meta.env.VITE_API_URL_DEV;
+export const BASE_URL = BASE_API_URL;
+export const CDN_URL = import.meta.env.VITE_CDN_URL;
+export const DEFAULT_LATITUDE = import.meta.env.VITE_DEFAULT_LATITUDE;
+export const DEFAULT_LONGITUDE = import.meta.env.VITE_DEFAULT_LONGITUDE;
 
-export const MENU_API =
-  'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.89960&lng=80.22090&restaurantId=';
-export const DEFAULT_LATITUDE=12.89960
-export const DEFAULT_LONGITUDE=80.22090

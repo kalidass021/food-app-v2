@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantCard from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
-// import Shimmer from '../components/skeleton/Shimmer';
 import RestaurantCardLoader from '../components/skeleton/RestaurantCardLoader';
-import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../utils/constants';
+import {
+  BASE_URL,
+  DEFAULT_LATITUDE,
+  DEFAULT_LONGITUDE,
+} from '../utils/constants';
 
 import useGeoLocation from '../hooks/useGeoLocation';
 
@@ -15,7 +18,7 @@ const Home = () => {
   const [searchText, setSearchText] = useState('');
   const [showTopRated, setShowTopRated] = useState(false);
 
-  const {latitude, longitude} = useGeoLocation();
+  const { latitude, longitude } = useGeoLocation();
 
   const lat = latitude || DEFAULT_LATITUDE;
   const lng = longitude || DEFAULT_LONGITUDE;
@@ -23,13 +26,11 @@ const Home = () => {
   // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
 
   useEffect(() => {
-      fetchData();
+    fetchData();
   }, [lat, lng]);
 
   const fetchData = async () => {
-    // server prod url
-    const url = `https://food-api-o33x.onrender.com/api/restaurants?lat=${lat}&lng=${lng}`;
-    // const url = `http://localhost:5000/api/restaurants?lat=${lat}&lng=${lng}`;
+    const url = `${BASE_URL}/api/restaurants?lat=${lat}&lng=${lng}`;
     // const url =
     //   'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.89960&lng=80.22090&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
     try {
@@ -111,11 +112,11 @@ const Home = () => {
         <div className='form-control pl-[120px] mr-0'>
           <label className='label cursor-pointer'>
             <span className='label-text mr-[10px]'>Top Rated</span>
-              <input
-                type='checkbox'
-                className='toggle bg-gray-600 toggle-error'
-                onClick={filterBtnClick}
-              />
+            <input
+              type='checkbox'
+              className='toggle bg-gray-600 toggle-error'
+              onClick={filterBtnClick}
+            />
           </label>
         </div>
         {/* <div className='m-4 p-4 flex items-center'>

@@ -74,6 +74,17 @@ const Home = () => {
     // console.log("filteredList", filteredList);
   };
 
+  const handleSearch = (e) => {
+    const {value} = e.target;
+    setSearchText(value);
+    // reg ex powered live search
+    const searchTextRegex = new RegExp(value, 'i'); // i flag for case insentivity
+    const searchedRestaurants = restaurantList.filter((restaurant) =>
+      searchTextRegex.test(restaurant.info.name)
+    );
+    setFilteredRestaurant(searchedRestaurants);
+  };
+
   // conditional rendering
   // if (restaurantList.length === 0)
   return !restaurantList?.length ? (
@@ -88,11 +99,9 @@ const Home = () => {
             placeholder='Search'
             className='border-[1.5px] pl-2 rounded-xl w-[350px] h-[30px] border-solid border-gray-400'
             value={searchText}
-            onChange={(event) => {
-              setSearchText(event.target.value);
-            }}
+            onChange={handleSearch}
           />
-          <button
+          {/* <button
             className='p-4 py-1 m-4 bg-[#ff5200] text-white rounded-xl'
             onClick={() => {
               // Filter the res and update the UI
@@ -107,7 +116,7 @@ const Home = () => {
             }}
           >
             Search
-          </button>
+          </button> */}
         </div>
         <div className='form-control pl-[120px] mr-0'>
           <label className='label cursor-pointer'>

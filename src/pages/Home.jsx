@@ -75,7 +75,7 @@ const Home = () => {
   };
 
   const handleSearch = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     setSearchText(value);
     // reg ex powered live search
     const searchTextRegex = new RegExp(value, 'i'); // i flag for case insentivity
@@ -90,7 +90,7 @@ const Home = () => {
   return !restaurantList?.length ? (
     <RestaurantCardLoader />
   ) : (
-    <div className='bg-rgb(255, 255, 255)'>
+    <div className='bg-rgb(255, 255, 255) min-h-screen'>
       <div className='flex items-center ml-[300px]'>
         <div className='m-4 p-4'>
           <input
@@ -146,8 +146,13 @@ const Home = () => {
           /> */}
         </div>
       </div>
+      {!filteredRestaurant.length && (
+        <div className='flex justify-center mt-[10%]'>
+          <h1 className='font-bold'>No restaurant found.</h1>
+        </div>
+      )}
       <div className='ml-[20px] p-[40px] grid grid-cols-4 gap-[10px] pt[10px]'>
-        {filteredRestaurant?.map((restaurant) => (
+        {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={`restaurants/${restaurant.info.id}`}

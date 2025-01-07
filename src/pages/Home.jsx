@@ -20,8 +20,8 @@ const Home = () => {
 
   const { latitude, longitude } = useGeoLocation();
 
-  const lat = latitude || DEFAULT_LATITUDE;
-  const lng = longitude || DEFAULT_LONGITUDE;
+  const lat = latitude ?? DEFAULT_LATITUDE;
+  const lng = longitude ?? DEFAULT_LONGITUDE;
 
   // Whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
 

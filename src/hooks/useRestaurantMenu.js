@@ -9,7 +9,7 @@ const useRestaurantMenu = (resId) => {
   }, []);
 
   const fetchData = async () => {
-    const url = `${BASE_URL}/api/restaurants`
+    const url = `${BASE_URL}/restaurants`
     try {
       const data = await fetch(`${url}/${resId}`);
       // const data = await fetch(`${url}/${resId}`);

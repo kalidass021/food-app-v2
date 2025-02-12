@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BASE_URL } from '../utils/constants';
+import { API_BASE_URL } from '../utils/constants';
 
 const useRestaurantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
@@ -9,7 +9,7 @@ const useRestaurantMenu = (resId) => {
   }, []);
 
   const fetchData = async () => {
-    const url = `${BASE_URL}/restaurants`
+    const url = `${API_BASE_URL}/restaurants`
     try {
       const data = await fetch(`${url}/${resId}`);
       // const data = await fetch(`${url}/${resId}`);

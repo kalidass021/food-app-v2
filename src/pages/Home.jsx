@@ -4,7 +4,7 @@ import RestaurantCard from '../components/RestaurantCard';
 // import resList from "../utils/mockData";
 import RestaurantCardLoader from '../components/skeleton/RestaurantCardLoader';
 import {
-  BASE_URL,
+  API_BASE_URL,
   DEFAULT_LATITUDE,
   DEFAULT_LONGITUDE,
 } from '../utils/constants';
@@ -30,7 +30,7 @@ const Home = () => {
   }, [lat, lng]);
 
   const fetchData = async () => {
-    const url = `${BASE_URL}/restaurants?lat=${lat}&lng=${lng}`;
+    const url = `${API_BASE_URL}/restaurants?lat=${lat}&lng=${lng}`;
     // const url =
     //   'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.89960&lng=80.22090&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
     try {
